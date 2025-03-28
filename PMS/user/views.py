@@ -18,8 +18,8 @@ class CreatingCoordinator(CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(is_coordinator=True,is_staff=True)
 class GetUser(RetrieveAPIView):
-    # permission_classes=[IsAuthenticated]
-    # authentication_classes=[JWTAuthentication]
+    permission_classes=[IsAuthenticated]
+    authentication_classes=[JWTAuthentication]
     
     def get(self, request, *args, **kwargs):
         user=request.user
