@@ -49,10 +49,11 @@ INSTALLED_APPS = [
     'user','management',
     
     #Third_party
-    'rest_framework', 'rest_framework_simplejwt'
+    'rest_framework', 'rest_framework_simplejwt' 'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
      'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -155,3 +156,7 @@ SIMPLE_JWT={
 ACCOUNT_USERNAME_BLACKLIST=['admin','accounts','profile','category','post','inbox','mangement','con']
 
 CSRF_TRUSTED_ORIGINS=['https://kpm-backend-django-production.up.railway.app']
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000", 
+    "https://yourfrontend.com"
+]
