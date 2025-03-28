@@ -157,6 +157,6 @@ ACCOUNT_USERNAME_BLACKLIST=['admin','accounts','profile','category','post','inbo
 
 CSRF_TRUSTED_ORIGINS=['https://kpm-backend-django-production.up.railway.app']
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000", 
-    "https://yourfrontend.com"
+    "http://localhost:5173"
+   
 ]
