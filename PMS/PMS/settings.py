@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'user','management',
     
     #Third_party
-    'rest_framework', 'rest_framework_simplejwt' 'corsheaders',
+    'rest_framework', 'rest_framework_simplejwt', 'corsheaders',
 ]
 
 MIDDLEWARE = [
