@@ -157,3 +157,5 @@ SIMPLE_JWT={
 }
 
 ACCOUNT_USERNAME_BLACKLIST=['admin','accounts','profile','category','post','inbox','mangement','con']
+
+CSRF_TRUSTED_ORIGINS=['https://kpm-backend-django-production.up.railway.app']
