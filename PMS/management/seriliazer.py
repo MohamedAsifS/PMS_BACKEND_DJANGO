@@ -32,7 +32,9 @@ class CompanyTableSerializer(serializers.ModelSerializer):
         
         
 class PlacementSerilizer(serializers.ModelSerializer):
-    Student=serializers.CharField(source="Student.student_name")
+    student=serializers.CharField(source="student.student_name")
+    company=serializers.CharField(source="company.company_name")
+    department=serializers.CharField(source="department.department_name")
     class Meta:
     
         model=PlacementRecord
