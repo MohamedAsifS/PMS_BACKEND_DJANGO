@@ -7,13 +7,8 @@ from user.models import User
 date=datetime.datetime.now().year
 
 class Department(models.Model):
-   department=[
-        ('MCA','MCA'),
-        ("CSE", "CSE"),
-        ("IT", "IT"),
-        ("ECE", "ECE"),
-    ]
-   department_name=models.CharField(max_length=8,unique=True,choices=department,null=True)
+  
+   department_name=models.CharField(max_length=8,unique=True,null=True)
    
    def __str__(self) -> str:
           if self.department_name==None:

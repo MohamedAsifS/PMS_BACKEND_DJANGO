@@ -8,7 +8,7 @@ import pandas as pd
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .models import Student,Department,CompanyTable,PlacementRecord,CompanyDepartmentYear
-from .seriliazer import StudentSerializer,CompanyTableSerializer,PlacementSerilizer,CompanyDepartmentwithYearSerilizer,StudentList,CompanyList
+from .seriliazer import StudentSerializer,CompanyTableSerializer,PlacementSerilizer,CompanyDepartmentwithYearSerilizer,StudentList,CompanyList,DepartmentSerilizer
 
 from .permission import PermissionForCoordinator,PermissionForStaff
 
@@ -66,7 +66,11 @@ class StudentCreateManual(CreateAPIView):
   
     
     def post(self,request,*args,**kwargs):
-         departement,_=Department.objects.get_or_create(department_name=request.data.get('student_department'))
+         print(request.data.get('student_department'))
+         departement=Department.objects.get(department_name=request.data.get('student_department'))
+         print(departement,departement.id)
+        
+         
         
          data={
          "student_name": request.data.get('student_name'),
@@ -92,8 +96,13 @@ def list_student(request):
    
     return Response(series.data)
         
-   
-   
+@api_view(['GET'])      
+def list_department(request):
+    get=Department.objects.all()
+    data=DepartmentSerilizer(get,many=True)
+    
+    return Response(data.data)  
+    
     
 @api_view(['GET'])
 def list_company(request):
@@ -138,7 +147,7 @@ class PlacementRecordCreater(CreateAPIView):
     serializer_class=PlacementSerilizer
     authentication_classes=[JWTAuthentication]
     permission_classes=[PermissionForCoordinator,permissions.IsAuthenticated]
-    # authentication_classes=[authentication.SessionAuthentication]
+    authentication_classes=[authentication.SessionAuthentication]
     def post(self,request,*args,**kwargs):
         print(request.POST)
         student=Student.objects.get(id=request.POST.get('student'))
@@ -188,8 +197,11 @@ class RetriveDataPlacementRecord(ListAPIView):
         company=self.request.GET.get('company')
         department=self.request.GET.get('department')
         status=self.request.GET.get('status')
-        
+      
         return PlacementRecord.objects.get_params_record(student_name=student_name,company=company,department=department,status=status)
+       
+            
+        
        
        
 class RetriveCompany(ListAPIView):
@@ -205,4 +217,3 @@ class RetriveCompany(ListAPIView):
         return CompanyDepartmentYear.objects.get_params_company(year=year,department=department)
 
     
-       

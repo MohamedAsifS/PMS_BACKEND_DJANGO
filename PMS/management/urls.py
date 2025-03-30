@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import StudnetsCreateExcel,CompanyCreateExcel,PlacementRecordCreater,CompanyDepartmentYearCreate,RetriveDataPlacementRecord,RetriveCompany,StudentCreateManual,list_student,list_company
+from .views import StudnetsCreateExcel,CompanyCreateExcel,PlacementRecordCreater,CompanyDepartmentYearCreate,RetriveDataPlacementRecord,RetriveCompany,StudentCreateManual,list_student,list_company,list_department
 
 urlpatterns = [
     path('excelstudents',StudnetsCreateExcel.as_view()),
@@ -10,5 +10,6 @@ urlpatterns = [
     path('retriverecord',RetriveDataPlacementRecord.as_view()),
     path('retrivecompany',RetriveCompany.as_view()),
     path('liststudent',list_student),
-    path('listcompany',list_company)
+    path('listcompany',list_company),
+    path('listdepartment',list_department)
 ]
