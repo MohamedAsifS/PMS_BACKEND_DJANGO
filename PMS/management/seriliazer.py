@@ -32,8 +32,9 @@ class CompanyTableSerializer(serializers.ModelSerializer):
         
         
 class PlacementSerilizer(serializers.ModelSerializer):
+    Student=serializers.CharField(source="Student.student_name")
     class Meta:
-        Student=serializers.CharField(source="Student.student_name")
+    
         model=PlacementRecord
         fields=['student','company','department','role','year','status']
         
