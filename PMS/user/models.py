@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.hashers import make_password
-
+import datetime
+current=datetime.datetime.now().year
 # Create your models here.
 class User (AbstractUser):
     DEPARTMENT_CHOICES = [
@@ -12,9 +13,9 @@ class User (AbstractUser):
     ] 
     YEAR_CHOICES = [(year, str(year)) for year in range(2020, 2031)]  # 2020 to 2030
 
-    department = models.CharField(max_length=100, choices=DEPARTMENT_CHOICES, blank=True, null=True)
-    year = models.IntegerField(choices=YEAR_CHOICES, blank=True, null=True)
-    is_coordinator = models.BooleanField(default=False)
+    department = models.CharField(max_length=100,default="MCA")
+    year = models.IntegerField(default=current)
+    is_coordinator = models.BooleanField(default=True)
     
     def save(self, *args, **kwargs):
         # Ensure the password is hashed when saving manually
