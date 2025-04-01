@@ -197,6 +197,7 @@ class RetriveDataPlacementRecord(ListAPIView):
         company=self.request.GET.get('company')
         department=self.request.GET.get('department')
         status=self.request.GET.get('status')
+        year=self.request.GET.get('year')
       
         return PlacementRecord.objects.get_params_record(student_name=student_name,company=company,department=department,status=status)
        

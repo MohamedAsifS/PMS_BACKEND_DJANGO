@@ -12,6 +12,8 @@ class PlacementQuerySEt(models.QuerySet):
     def get_status(self,status):
         print("yes")
         return self.filter(status=status)
+    def get_year(self,year):
+        return self.filter(year=year)
 class RetriveDepartment(models.QuerySet):
     
     def get_Year(self,year):
@@ -32,6 +34,7 @@ class PlacementManger(models.Manager):
         company_name=kwargs.get('company_name')
         department=kwargs.get('department')
         status=kwargs.get('status')
+        year=kwargs.get('year')
         
         # student_name,company_name,department,status
         querySet=self.get_queryset_record()
@@ -43,6 +46,8 @@ class PlacementManger(models.Manager):
             querySet=querySet.get_department(department)
         if status:
             querySet=querySet.get_status(status)
+        if year:
+            querySet=querySet.get_Year(year)
         print(status,student_name)
         
         return querySet
