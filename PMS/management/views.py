@@ -38,7 +38,7 @@ class StudnetsCreateExcel(CreateAPIView):
 
         for _, row in store.iterrows():
             print(row)
-            department=Department.objects.get_or_create(department_name=row[1])
+            department,_=Department.objects.get_or_create(department_name=row[1])
             
             to={'student_name':row[0], 'student_department':department.department_name,'marks':row[2], 
                 'date_of_birth':row[3].date(),'year':row[4]}
