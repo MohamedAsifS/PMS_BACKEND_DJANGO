@@ -171,7 +171,7 @@ class CompanyDepartmentYearCreate(CreateAPIView):
     def post(self, request, *args, **kwargs):
         print(request.POST)
         print(request.data.get('company.company_name'),request.data.get('department'))
-        company,_=CompanyTable.objects.get_or_create(company_name=request.data.get('company.company_name'),company_location=request.data.get('company.company_location')) #here we get tuple so we need to unpack
+        company,_=CompanyTable.objects.get_or_create(company_name=request.data.get('company_name'),company_location=request.data.get('company_location')) #here we get tuple so we need to unpack
         department,_=Department.objects.get_or_create(department_name=request.data.get('department'))
         
         data = {
