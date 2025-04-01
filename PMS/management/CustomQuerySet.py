@@ -47,7 +47,7 @@ class PlacementManger(models.Manager):
         if status:
             querySet=querySet.get_status(status)
         if year:
-            querySet=querySet.get_Year(year)
+            querySet=querySet.get_year(year)
         print(status,student_name)
         
         return querySet
