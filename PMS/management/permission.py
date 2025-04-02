@@ -5,7 +5,7 @@ class PermissionForCoordinator(DjangoModelPermissions):
         'GET': ['%(management)s.add_%(PlacementRecord)s','%(management)s.add_%(Student)s','%(management)s.add_%(CompanyDepartmentYear)s'],
         'OPTIONS': [],
         'HEAD': [],
-        'POST': ['%(management)s.add_%(model_name)s'],
+        'POST': ['%(management)s.add_%(PlacementRecord)s'],
         'PUT': ['%(app_label)s.change_%(model_name)s'],
         'PATCH': ['%(app_label)s.change_%(model_name)s'],
         'DELETE': ['%(app_label)s.delete_%(model_name)s'],
