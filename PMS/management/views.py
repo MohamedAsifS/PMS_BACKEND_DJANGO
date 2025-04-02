@@ -148,7 +148,7 @@ class PlacementRecordCreater(CreateAPIView):
     serializer_class=PlacementSerilizer
     authentication_classes=[JWTAuthentication]
     permission_classes=[PermissionForCoordinator,permissions.IsAuthenticated]
-    authentication_classes=[authentication.SessionAuthentication]
+    
     def post(self,request,*args,**kwargs):
         print(request.POST,request.POST.get('company'))
         student=Student.objects.filter(student_name=request.data.get('student')).first()
