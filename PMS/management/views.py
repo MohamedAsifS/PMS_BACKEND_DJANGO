@@ -108,7 +108,7 @@ def list_department(request):
 @api_view(['GET'])
 def list_company(request):
     print(request.GET.get('department'))
-    modle=CompanyDepartmentYear.objects.select_related('department').filter(department__department_name=request.GET.get('department'))
+    modle=CompanyDepartmentYear.objects.filter(year=request.GET.get('year')).select_related('department').filter(department__department_name=request.GET.get('department'))
     series=CompanyList(modle,many=True)
     return Response(series.data)
 
