@@ -147,7 +147,7 @@ class PlacementRecordCreater(CreateAPIView):
     queryset = PlacementRecord.objects.all()
     serializer_class=PlacementSerilizer
     authentication_classes=[JWTAuthentication]
-    permission_classes=[PermissionForCoordinator,permissions.IsAuthenticated]
+    permission_classes=[permissions.IsAuthenticated,PermissionForCoordinator]
     authentication_classes=[authentication.SessionAuthentication]
     def post(self,request,*args,**kwargs):
         print(request.POST)
