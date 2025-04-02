@@ -14,7 +14,7 @@ class StudentList(serializers.ModelSerializer):
     student_department = serializers.CharField(source="student_department.department_name")
     class Meta:
         model=Student
-        fields=['student_name','student_department']
+        fields=['student_name','student_department','year']
     
         
 class CompanyList(serializers.ModelSerializer):

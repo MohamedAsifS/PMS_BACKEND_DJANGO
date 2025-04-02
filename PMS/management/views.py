@@ -89,8 +89,9 @@ class StudentCreateManual(CreateAPIView):
 def list_student(request):
     department='MCA'
     print(request.GET.get('department'))
-    students = Student.objects.select_related('student_department').filter(
-        student_department__department_name=request.GET.get('department')
+    students = Student.objects.filter(year=request.GET.get('year')).select_related('student_department').filter(
+        student_department__department_name=request.GET.get('department'),
+      
     )
     series=StudentList(students,many=True)
    
