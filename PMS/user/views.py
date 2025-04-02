@@ -23,5 +23,5 @@ class GetUser(RetrieveAPIView):
     
     def get(self, request, *args, **kwargs):
         user=request.user
-        return Response({'iscoordinator':user.is_coordinator,"department":user.department})
+        return Response({'iscoordinator':user.is_coordinator,"department":user.department,"year":user.year})
     
