@@ -150,10 +150,10 @@ class PlacementRecordCreater(CreateAPIView):
     permission_classes=[permissions.IsAuthenticated,PermissionForCoordinator]
     authentication_classes=[authentication.SessionAuthentication]
     def post(self,request,*args,**kwargs):
-        print(request.POST)
-        student=Student.objects.filter(student_name=request.POST.get('student')).first()
-        company=CompanyTable.objects.get(company_name=request.POST.get('company'))
-        department=Department.objects.get(department_name=request.POST.get('department'))
+        print(request.POST,request.POST.get('company'))
+        student=Student.objects.filter(student_name=request.data.get('student')).first()
+        company=CompanyTable.objects.filter(company_name=request.data.get('company')).first()
+        department=Department.objects.filter(department_name=request.data.get('department')).first()
         if student is None or company is None:
             return Response({"error":"Student or Company not found"},status=404)
         series=PlacementSerilizer(data=request.data)
